@@ -20,6 +20,6 @@ public class Project extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+//    private LocalDateTime startDate;
+//    private LocalDateTime endDate;
 }
