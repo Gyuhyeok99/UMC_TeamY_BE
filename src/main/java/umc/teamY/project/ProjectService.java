@@ -7,12 +7,14 @@ import org.springframework.transaction.annotation.Transactional;
 import umc.teamY.exception.CustomException;
 import umc.teamY.project.dto.ProjectCreateReponse;
 import umc.teamY.project.dto.ProjectCreateRequest;
+import umc.teamY.project.dto.ProjectListReponse;
 import umc.teamY.user.User;
 import umc.teamY.user.UserRepository;
 import umc.teamY.user_project.UserProject;
 import umc.teamY.user_project.UserProjectRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static umc.teamY.exception.ErrorCode.USER_NOT_FOUND;
 
@@ -25,6 +27,13 @@ public class ProjectService {
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
     private final UserProjectRepository userProjectRepository;
+
+    public List<ProjectListReponse> findByProjectTerm(ProjectTerm projectTerm) {
+        List<Project> projects = projectRepository.findByProjectTerm(projectTerm);
+        return projects.stream()
+                .map(ProjectListReponse::new)
+                .collect(Collectors.toList());
+    }
 
     @Transactional
     public ProjectCreateReponse createProject(ProjectCreateRequest request) {
