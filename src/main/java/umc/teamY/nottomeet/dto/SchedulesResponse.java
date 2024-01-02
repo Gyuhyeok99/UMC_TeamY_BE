@@ -1,12 +1,11 @@
 package umc.teamY.nottomeet.dto;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class NotToMeetCreateRequest {
-    private Long userId;
-    private Long projectId;
-    private String date;
+public class SchedulesResponse {
+    private List<ScheduleDto> scheduleDtos;
 }
