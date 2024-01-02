@@ -2,14 +2,18 @@ package umc.teamY.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import umc.teamY.exception.CustomException;
 import umc.teamY.user.dto.UserJoinRequest;
 import umc.teamY.user.dto.UserJoinResponse;
 import umc.teamY.user.dto.UserListResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static umc.teamY.exception.ErrorCode.DUPLICATED_STUDENT_ID;
 
 @Service
 @Transactional(readOnly = true)
@@ -18,15 +22,21 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public UserJoinResponse join(UserJoinRequest request) {
+        // 먼저 studentId가 이미 존재하는지 확인
+        if (userRepository.existsByStudentId(request.getStudentId())) {
+            throw new CustomException(DUPLICATED_STUDENT_ID);
+        }
         // User 객체 생성
         User user = User.builder()
                         .studentId(request.getStudentId())
-                        .password(request.getPassword())
+                        .password(passwordEncoder.encode(request.getPassword()))
                         .school(request.getSchool())
                         .name(request.getName())
+                        .contribution(0L)   // 기본값 0으로 설정
                         .build();
         // 데이터베이스에 User 저장
         userRepository.save(user);
