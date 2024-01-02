@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.teamY.meeting.Meeting;
 import umc.teamY.global.BaseTimeEntity;
+import umc.teamY.tag.Tag;
 
 @Getter
 @Entity
@@ -17,7 +18,13 @@ public class Todo extends BaseTimeEntity {
     private Long id;
     private String content;
     private Boolean isCompleted;
+    private Long ownerId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Meeting metting;
+    @JoinColumn(name = "meeting_id")
+    private Meeting meeting;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tag_id")
+    private Tag tag;
 }
