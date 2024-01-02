@@ -30,6 +30,7 @@ public class ProjectService {
     public ProjectCreateReponse createProject(ProjectCreateRequest request) {
         Project project = Project.builder()
                 .title(request.getTitle())
+                .projectTerm(request.getProjectTerm())
                 .build();
         projectRepository.save(project);
         // 유저-프로젝트 연결

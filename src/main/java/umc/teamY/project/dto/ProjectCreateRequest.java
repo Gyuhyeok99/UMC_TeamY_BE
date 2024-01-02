@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import umc.teamY.project.ProjectTerm;
 
 import java.util.List;
 
@@ -14,5 +15,6 @@ import java.util.List;
 public class ProjectCreateRequest {
 
     String title;
+    ProjectTerm projectTerm;
     List<Long> userIds;
 }
