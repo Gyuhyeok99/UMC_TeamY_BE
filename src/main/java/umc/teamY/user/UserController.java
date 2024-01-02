@@ -27,8 +27,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserLoginResponse> authenticate(@RequestBody UserLoginRequest request) {
-        return ResponseEntity.ok(userService.login(request));
+    public Response<UserLoginResponse> login(@RequestBody UserLoginRequest request) {
+        return Response.success(userService.login(request));
     }
     @GetMapping
     public Response<List<UserListResponse>> getAllUsers() {

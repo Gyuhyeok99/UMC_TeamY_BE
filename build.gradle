@@ -34,7 +34,6 @@ dependencies {
 	//h2
 	//runtimeOnly 'com.h2database:h2'
 
-	implementation 'mysql:mysql-connector-java:8.0.32'
 	implementation 'mysql:mysql-connector-java'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 

@@ -52,8 +52,9 @@ public class UserService {
         User user = userRepository.findByStudentId(request.getStudentId())
                 .orElseThrow(() -> new CustomException(INVALID_LOGIN_INFO));
 
+        log.info("패스워드 확인");
         // password가 일치하는지 확인
-        if (request.getPassword().equals(user.getPassword())) {
+        if (!request.getPassword().equals(user.getPassword())) {
             // password가 일치하지 않는 경우, 사용자 정의 예외 발생
             throw new CustomException(INVALID_LOGIN_INFO);
         }
