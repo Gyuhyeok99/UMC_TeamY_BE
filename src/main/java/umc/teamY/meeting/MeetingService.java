@@ -3,7 +3,8 @@ package umc.teamY.meeting;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import umc.teamY.exception.CustomException;
-import umc.teamY.meeting.dto.MeetingRequest;
+import umc.teamY.meeting.dto.MeetingCreateRequest;
+import umc.teamY.meeting.dto.MeetingCreateResponse;
 import umc.teamY.meeting.dto.MeetingTotalResponse;
 import umc.teamY.project.Project;
 import umc.teamY.project.ProjectRepository;
@@ -19,12 +20,14 @@ public class MeetingService {
     private final ProjectRepository projectRepository;
 
     /** 회의 생성 */
-    public void createMeeting (MeetingRequest request) {
+    public MeetingCreateResponse createMeeting (MeetingCreateRequest request) {
         Project project = projectRepository.findById(request.getProjectId())
                 .orElseThrow(() -> new CustomException(PROJECT_NOT_EXIST));
 
         Meeting meeting = request.toEntity(project);
         meetingRepository.save(meeting);
+
+        return new MeetingCreateResponse(meeting.getId());
     }
 
     /** 전체 회의 조희 */

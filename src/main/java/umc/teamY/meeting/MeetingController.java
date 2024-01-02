@@ -3,7 +3,9 @@ package umc.teamY.meeting;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import umc.teamY.meeting.dto.MeetingRequest;
+import umc.teamY.global.Response;
+import umc.teamY.meeting.dto.MeetingCreateRequest;
+import umc.teamY.meeting.dto.MeetingCreateResponse;
 import umc.teamY.meeting.dto.MeetingTotalResponse;
 
 @RestController
@@ -15,15 +17,16 @@ public class MeetingController {
 
     /** 회의 생성 */
     @PostMapping("/")
-    public ResponseEntity<Void> createMeeting(@RequestBody MeetingRequest request) {
-        meetingService.createMeeting(request);
-        return ResponseEntity.ok().build();
+    public Response<MeetingCreateResponse> createMeeting(@RequestBody MeetingCreateRequest request) {
+        return Response.success(meetingService.createMeeting(request));
     }
 
     /** 회의 전체 조회 */
     @GetMapping("/{projectId}")
-    public ResponseEntity<MeetingTotalResponse> getTotalMeeting(@PathVariable("projectId") Long projectId) {
-        MeetingTotalResponse response = meetingService.getTotalMeeting(projectId);
-        return ResponseEntity.ok(response);
+    public Response<MeetingTotalResponse> getTotalMeeting(@PathVariable("projectId") Long projectId) {
+//        MeetingTotalResponse response = meetingService.getTotalMeeting(projectId);
+//        return ResponseEntity.ok(response);
+
+        return Response.success(meetingService.getTotalMeeting(projectId));
     }
 }

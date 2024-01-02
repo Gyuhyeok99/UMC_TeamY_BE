@@ -3,7 +3,6 @@ package umc.teamY.meeting.dto;
 import lombok.*;
 import umc.teamY.meeting.Meeting;
 import umc.teamY.project.Project;
-import umc.teamY.project.ProjectRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,7 +11,7 @@ import java.time.LocalTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MeetingRequest {
+public class MeetingCreateRequest {
 
     private Long projectId;
     private String title;
