@@ -3,6 +3,7 @@ package umc.teamY.tag;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.teamY.global.BaseTimeEntity;
 import umc.teamY.meeting.Meeting;
 
 @Getter
@@ -10,7 +11,7 @@ import umc.teamY.meeting.Meeting;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @AllArgsConstructor
-public class Tag {
+public class Tag extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

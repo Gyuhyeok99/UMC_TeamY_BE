@@ -1,4 +1,4 @@
-package umc.teamY.user.dto;
+package umc.teamY.user.dto.join;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserListResponse {
+public class UserJoinResponse {
 
     private Long userId;
-    private String name;
 }
