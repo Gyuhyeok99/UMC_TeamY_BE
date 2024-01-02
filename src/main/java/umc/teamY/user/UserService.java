@@ -2,12 +2,9 @@ package umc.teamY.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.teamY.exception.CustomException;
-import umc.teamY.exception.ErrorCode;
 import umc.teamY.user.dto.join.UserJoinRequest;
 import umc.teamY.user.dto.join.UserJoinResponse;
 import umc.teamY.user.dto.list.UserListResponse;
@@ -27,7 +24,6 @@ import static umc.teamY.exception.ErrorCode.INVALID_LOGIN_INFO;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public UserJoinResponse join(UserJoinRequest request) {
@@ -38,7 +34,7 @@ public class UserService {
         // User 객체 생성
         User user = User.builder()
                         .studentId(request.getStudentId())
-                        .password(passwordEncoder.encode(request.getPassword()))
+                        .password(request.getPassword())
                         .school(request.getSchool())
                         .name(request.getName())
                         .contribution(0L)   // 기본값 0으로 설정
@@ -57,7 +53,7 @@ public class UserService {
                 .orElseThrow(() -> new CustomException(INVALID_LOGIN_INFO));
 
         // password가 일치하는지 확인
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        if (request.getPassword().equals(user.getPassword())) {
             // password가 일치하지 않는 경우, 사용자 정의 예외 발생
             throw new CustomException(INVALID_LOGIN_INFO);
         }
