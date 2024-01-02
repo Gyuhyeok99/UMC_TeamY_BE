@@ -65,15 +65,10 @@ public class TodoService {
         return new TodoCreateResponse(todo.getId());
     }
 
-    /** 하루 남은 Meeting 조회 */
-    public List<Meeting> findTodoListUpcomingDeadLine() {
-        LocalDate upComingDeadLine = LocalDate.now().plusDays(1);
-        return meetingRepository.findMeetingsByEndDate(upComingDeadLine);
-    }
-
     /** 하루 남은 체크리스트 중 완료 안된 체크리스트 조회 */
     public List<Long> getTodoIdListNotCompleted() {
-        List<Meeting> todoListUpcomingDeadLine = findTodoListUpcomingDeadLine();
+        LocalDate upComingDeadLine = LocalDate.now().plusDays(1);
+        List<Meeting> todoListUpcomingDeadLine = meetingRepository.findMeetingsByEndDate(upComingDeadLine);
 
         return todoListUpcomingDeadLine.stream()
                 .flatMap(meeting -> todoRepository.findTodoIdsByMeetingIdAndIsCompleted(meeting.getId(), false).stream())

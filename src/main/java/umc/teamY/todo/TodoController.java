@@ -39,7 +39,7 @@ public class TodoController {
     /** 하루 남은 미완료 체크리스트 ID 목록 조회 */
     @GetMapping("/nearbyDeadline")
     public Response<List<Long>> findTodoIdsWithNearbyDeadline() {
-        List<Long> todoIds = todoService.getTodoIdListNotCompleted();
-        return Response.success(todoIds);
+        List<Long> todoIdList = todoService.getTodoIdListNotCompleted();
+        return Response.success(todoIdList);
     }
 }
