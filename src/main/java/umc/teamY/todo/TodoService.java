@@ -10,6 +10,10 @@ import umc.teamY.tag.Tag;
 import umc.teamY.tag.TagRepository;
 import umc.teamY.todo.dto.TodoCreateRequest;
 import umc.teamY.todo.dto.TodoCreateResponse;
+import umc.teamY.todo.dto.TodoDetailResponse;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static umc.teamY.exception.ErrorCode.*;
 
@@ -35,19 +39,19 @@ public class TodoService {
         return new TodoCreateResponse(todo.getId());
     }
 
-    /** 체크리스트 조회 */
-
-
     /** 체크리스트 팀원 지정 */
-    public void assginOwner(Long todoId, Long ownerId) {
+    public TodoCreateResponse assginOwner(Long todoId, Long ownerId) {
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new CustomException(TODO_NOT_EXIST));
 
+        todo.assignOnwer(ownerId);
+        todoRepository.save(todo);
 
+        return new TodoCreateResponse(todo.getId());
     }
 
     /** 체크리스트 체크 */
-    public void updateTodoCompleted(Long todoId) {
+    public TodoCreateResponse updateTodoCompleted(Long todoId) {
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new CustomException(TODO_NOT_EXIST));
 
@@ -57,6 +61,6 @@ public class TodoService {
         todo.updateTodoCompleted(isCompleted);
         todoRepository.save(todo);
 
+        return new TodoCreateResponse(todo.getId());
     }
-
 }

@@ -13,7 +13,7 @@ import static lombok.AccessLevel.*;
 @NoArgsConstructor(access = PROTECTED)
 public class TodoCreateRequest {
 
-    private Long memberId;
+    private Long meetingId;
     private Long tagId;
     private String content;
     private Boolean isCompleted;

@@ -1,12 +1,10 @@
 package umc.teamY.todo;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import umc.teamY.global.Response;
 import umc.teamY.tag.TagService;
+import umc.teamY.todo.dto.TodoAddOwnerRequest;
 import umc.teamY.todo.dto.TodoCreateRequest;
 import umc.teamY.todo.dto.TodoCreateResponse;
 
@@ -21,5 +19,18 @@ public class TodoController {
     @PostMapping("/")
     public Response<TodoCreateResponse> addTodoToMeeting(@RequestBody TodoCreateRequest request) {
         return Response.success(todoService.addTodoMeeting(request));
+    }
+
+    /** 체크리스트 팀원 지정 */
+    @PatchMapping("/team/{todoId}")
+    public Response<TodoCreateResponse> assginOwner (@PathVariable("todoId") Long todoId,
+                                                     @RequestBody TodoAddOwnerRequest request) {
+        return Response.success(todoService.assginOwner(todoId, request.getOwnerId()));
+    }
+
+    /** 체크리스트 체크 */
+    @PatchMapping("/todoCompleted/{todoId}")
+    public Response<TodoCreateResponse> updateTodoCompleted (@PathVariable("todoId") Long todoId) {
+        return Response.success(todoService.updateTodoCompleted(todoId));
     }
 }
