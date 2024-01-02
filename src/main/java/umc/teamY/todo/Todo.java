@@ -31,7 +31,7 @@ public class Todo extends BaseTimeEntity {
     @JoinColumn(name = "tag_id")
     private Tag tag;
 
-    public void assignOnwer(Long ownerId) {
+    public void assignOwner(Long ownerId) {
         this.ownerId = ownerId;
     }
 

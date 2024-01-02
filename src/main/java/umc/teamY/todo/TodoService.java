@@ -12,6 +12,7 @@ import umc.teamY.todo.dto.TodoCreateRequest;
 import umc.teamY.todo.dto.TodoCreateResponse;
 import umc.teamY.todo.dto.TodoDetailResponse;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,11 +41,11 @@ public class TodoService {
     }
 
     /** 체크리스트 팀원 지정 */
-    public TodoCreateResponse assginOwner(Long todoId, Long ownerId) {
+    public TodoCreateResponse assignOwner(Long todoId, Long ownerId) {
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new CustomException(TODO_NOT_EXIST));
 
-        todo.assignOnwer(ownerId);
+        todo.assignOwner(ownerId);
         todoRepository.save(todo);
 
         return new TodoCreateResponse(todo.getId());
@@ -62,5 +63,15 @@ public class TodoService {
         todoRepository.save(todo);
 
         return new TodoCreateResponse(todo.getId());
+    }
+
+    /** 하루 남은 체크리스트 중 완료 안된 체크리스트 조회 */
+    public List<Long> getTodoIdListNotCompleted() {
+        LocalDate upComingDeadLine = LocalDate.now().plusDays(1);
+        List<Meeting> todoListUpcomingDeadLine = meetingRepository.findMeetingsByEndDate(upComingDeadLine);
+
+        return todoListUpcomingDeadLine.stream()
+                .flatMap(meeting -> todoRepository.findTodoIdsByMeetingIdAndIsCompleted(meeting.getId(), false).stream())
+                .collect(Collectors.toList());
     }
 }
