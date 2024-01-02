@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import java.sql.Time;
+import java.time.LocalTime;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,11 +35,11 @@ public class Schedule {
     @JoinColumn(name = "not_to_meet_id")
     private NotToMeet notToMeet;
 
-    private Time startTime;
+    private LocalTime startTime;
 
-    private Time endTime;
+    private LocalTime endTime;
 
-    public static Schedule of(User user, NotToMeet notToMeet, Time startTime, Time endTime) {
+    public static Schedule of(User user, NotToMeet notToMeet, LocalTime startTime, LocalTime endTime) {
         return Schedule.builder()
                 .user(user)
                 .notToMeet(notToMeet)

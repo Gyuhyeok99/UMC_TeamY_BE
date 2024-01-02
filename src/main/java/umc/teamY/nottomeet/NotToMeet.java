@@ -9,7 +9,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -35,17 +34,16 @@ public class NotToMeet extends BaseTimeEntity {
     @JoinColumn(name = "user_project_id")
     private UserProject userProject;
 
-    private Date date;
+    private String date;
 
-    @Builder.Default
-    @OneToMany
-    @JoinColumn(name = "not_to_meet_id")
-    private List<Schedule> schedules = new ArrayList<>();
+    @OneToMany(mappedBy = "notToMeet")
+    private List<Schedule> schedules;
 
-    public static NotToMeet of(UserProject userProject, Date date) {
+    public static NotToMeet of(UserProject userProject, String date) {
         return NotToMeet.builder()
                 .userProject(userProject)
                 .date(date)
+                .schedules(new ArrayList<>())
                 .build();
     }
 
