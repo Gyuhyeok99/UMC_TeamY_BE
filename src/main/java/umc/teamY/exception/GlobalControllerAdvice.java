@@ -10,8 +10,8 @@ import umc.teamY.global.Response;
 @RestControllerAdvice
 public class GlobalControllerAdvice {
 
-    @ExceptionHandler(SimpleSnsApplicationException.class)
-    public ResponseEntity<?> errorHandler(SimpleSnsApplicationException e) {
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<?> errorHandler(CustomException e) {
         log.error("Error occurs {}", e.toString());
         return ResponseEntity.status(e.getErrorCode().getStatus())
                 .body(Response.error(e.getErrorCode().name()));
