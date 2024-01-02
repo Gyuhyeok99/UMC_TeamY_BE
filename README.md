@@ -1,1 +1,29 @@
-# Y-Server1
+# UMC 5th 해커톤
+
+## 🧑🏻‍💻 Contributors
+|혁규|조이|코코|
+|:-:|:-:|:-:|
+|황규혁|장은세|임하정|
+|<img src="https://github.com/umc-hackathon-Y/Y-Server/assets/113760409/22148297-a7db-4abd-86cf-952e35e1be61" width="100px" />|<img src="https://github.com/umc-hackathon-Y/Y-Server/assets/113760409/db3d50c5-ff1d-457f-87a1-fe08518d7253" width="100px" />|<img src="https://github.com/umc-hackathon-Y/Y-Server/assets/113760409/a9ee4bf4-73ca-44d3-803e-b293a092ea05" width="100px" />|
+|[@Gyuhyeok99](https://github.com/Gyuhyeok99)|[@EunseJang](https://github.com/EunseJang)|
+
+
+## 🛠️ 기술 스택
+### Backend
+
+- <img src="https://img.shields.io/badge/Spring Boot 2.7.9-6DB33F?style=flat-square&logo=SpringBoot&logoColor=white"/> <img src="https://img.shields.io/badge/Spring Data JPA-6DB33F?style=flat-square&logo=&logoColor=white"/>
+- <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=flat-square&logo=SpringSecurity&logoColor=white"/> <img src="https://img.shields.io/badge/OAuth-000000?style=flat-square&logo=&logoColor=white"/> <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=&logoColor=white"/>
+- <img src="https://img.shields.io/badge/WebSocket-FF6C37?style=flat-square&logo=WebSocke" />
+- <img src="https://img.shields.io/badge/Intellij IDEA-0052CC?style=flat-square&logo=Intellij IDEA&logoColor=white"/>
+- <img src="https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=Postman&logoColor=white"/>
+
+### Frontend
+
+- <img src="https://img.shields.io/badge/Visual Studio Code-1867C0?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
+
+### Database
+
+- <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=&logoColor=white"/>
+
+
+## 📌 아키텍처 구조
