@@ -2,7 +2,7 @@ package umc.teamY.todo;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.teamY.metting.Metting;
+import umc.teamY.meeting.Meeting;
 import umc.teamY.util.BaseTimeEntity;
 
 @Getter
@@ -19,5 +19,5 @@ public class Todo extends BaseTimeEntity {
     private Boolean isCompleted;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Metting metting;
+    private Meeting metting;
 }

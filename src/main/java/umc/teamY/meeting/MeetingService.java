@@ -1,7 +1,7 @@
-package umc.teamY.metting;
+package umc.teamY.meeting;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class MettingService {
+public class MeetingService {
 }
