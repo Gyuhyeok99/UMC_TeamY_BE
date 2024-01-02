@@ -17,6 +17,9 @@ public enum ErrorCode {
     INVALID_PERMISSION(HttpStatus.UNAUTHORIZED, "User has invalid permission"),
     DATABASE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Database error occurs"),
     NOTIFICATION_CONNECT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Connect to notification occurs error"),
+
+    USER_PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "Project not founded"),
+    NOT_TO_MEET_NOT_FOUND(HttpStatus.NOT_FOUND, "Not To Meet not founded")
     ;
 
     private final HttpStatus status;
