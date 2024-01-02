@@ -19,7 +19,8 @@ public enum ErrorCode {
     NOTIFICATION_CONNECT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Connect to notification occurs error"),
 
     // Meeting
-    PROJECT_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 프로젝트입니다.")
+    PROJECT_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 프로젝트입니다."),
+    MEETING_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 회의입니다.")
     ;
 
     private final HttpStatus status;
