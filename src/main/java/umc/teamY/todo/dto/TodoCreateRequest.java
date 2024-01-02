@@ -13,6 +13,8 @@ import static lombok.AccessLevel.*;
 @NoArgsConstructor(access = PROTECTED)
 public class TodoCreateRequest {
 
+    private Long meetingId;
+    private Long tagId;
     private String content;
     private Boolean isCompleted;
     private Long ownerId;
@@ -23,7 +25,7 @@ public class TodoCreateRequest {
                 .tag(tag)
                 .content(content)
                 .isCompleted(isCompleted)
-                .ownerId(ownerId)
+                .ownerId(null)
                 .build();
     }
 }

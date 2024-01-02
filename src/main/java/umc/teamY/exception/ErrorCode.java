@@ -17,10 +17,11 @@ public enum ErrorCode {
     INVALID_PERMISSION(HttpStatus.UNAUTHORIZED, "User has invalid permission"),
     DATABASE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Database error occurs"),
     NOTIFICATION_CONNECT_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Connect to notification occurs error"),
-
-    // Meeting
+    
     PROJECT_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 프로젝트입니다."),
     MEETING_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 회의입니다."),
+    TAG_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 태그입니다."),
+    TODO_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 체크리스트 입니다."),
 
     USER_PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "프로젝트를 찾을 수 없습니다."),
     NOT_TO_MEET_NOT_FOUND(HttpStatus.NOT_FOUND, "회의를 찾을 수 없습니다."),

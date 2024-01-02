@@ -2,6 +2,7 @@ package umc.teamY.todo;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import umc.teamY.meeting.Meeting;
 import umc.teamY.global.BaseTimeEntity;
 import umc.teamY.tag.Tag;
@@ -17,6 +18,8 @@ public class Todo extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
+
+    @ColumnDefault("false")
     private Boolean isCompleted;
     private Long ownerId;
 
@@ -27,4 +30,12 @@ public class Todo extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id")
     private Tag tag;
+
+    public void assignOnwer(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public void updateTodoCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
 }
