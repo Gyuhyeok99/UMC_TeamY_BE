@@ -1,4 +1,4 @@
-package umc.teamY.user.dto;
+package umc.teamY.user.dto.join;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,5 +1,4 @@
-package umc.teamY.user.dto;
-
+package umc.teamY.user.dto.list;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,10 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserJoinRequest {
+public class UserListResponse {
 
-    private String studentId;
-    private String password;
-    private String school;
+    private Long userId;
     private String name;
 }

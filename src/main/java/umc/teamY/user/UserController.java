@@ -2,11 +2,14 @@ package umc.teamY.user;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import umc.teamY.global.Response;
-import umc.teamY.user.dto.UserJoinRequest;
-import umc.teamY.user.dto.UserJoinResponse;
-import umc.teamY.user.dto.UserListResponse;
+import umc.teamY.user.dto.join.UserJoinRequest;
+import umc.teamY.user.dto.join.UserJoinResponse;
+import umc.teamY.user.dto.list.UserListResponse;
+import umc.teamY.user.dto.login.UserLoginRequest;
+import umc.teamY.user.dto.login.UserLoginResponse;
 
 import java.util.List;
 
@@ -23,6 +26,10 @@ public class UserController {
         return Response.success(userService.join(request));
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<UserLoginResponse> authenticate(@RequestBody UserLoginRequest request) {
+        return ResponseEntity.ok(userService.login(request));
+    }
     @GetMapping
     public Response<List<UserListResponse>> getAllUsers() {
         return Response.success(userService.findAllUsers());

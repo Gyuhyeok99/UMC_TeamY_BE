@@ -1,4 +1,4 @@
-package umc.teamY.user.dto;
+package umc.teamY.user.dto.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserListResponse {
-
-    private Long userId;
-    private String name;
+public class UserLoginRequest {
+        private String studentId;
+        private String password;
 }
