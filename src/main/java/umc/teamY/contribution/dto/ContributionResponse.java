@@ -8,5 +8,5 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class ContributionResponse {
-    private List<ContributionDto> contributionDtos;
+    private List<Double> contributions;
 }

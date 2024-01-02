@@ -18,7 +18,7 @@ public class ContributionController {
 
     @GetMapping
     public Response<ContributionResponse> getPersonal(@RequestParam Long projectId) {
-        List<Contribution> contributions = contributionService.getPersonal(projectId);
-
+        List<Double> personalResult = contributionService.getPersonal(projectId);
+        return Response.success(new ContributionResponse(personalResult));
     }
 }
