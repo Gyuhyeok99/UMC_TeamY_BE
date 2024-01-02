@@ -1,4 +1,4 @@
-package umc.tag;
+package umc.teamY.tag;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
