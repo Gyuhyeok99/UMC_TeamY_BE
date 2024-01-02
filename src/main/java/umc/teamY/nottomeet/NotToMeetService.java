@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc.teamY.exception.CustomException;
 import umc.teamY.exception.ErrorCode;
 import umc.teamY.nottomeet.schedule.Schedule;
+import umc.teamY.nottomeet.schedule.ScheduleRepository;
 import umc.teamY.user.User;
 import umc.teamY.user.UserRepository;
 import umc.teamY.user_project.UserProject;
@@ -20,6 +21,7 @@ public class NotToMeetService {
     private final NotToMeetRepository notToMeetRepository;
     private final UserProjectRepository userProjectRepository;
     private final UserRepository userRepository;
+    private final ScheduleRepository scheduleRepository;
 
     @Transactional
     public void create(Long userId, Long projectId, Date date) {
@@ -33,8 +35,9 @@ public class NotToMeetService {
         NotToMeet notToMeet = notToMeetRepository.findById(notToMeetId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_TO_MEET_NOT_FOUND));
         User user = userRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
-
-        notToMeet.addSchedule(Schedule.of(user, notToMeet, startTime, endTime));
+        Schedule schedule = Schedule.of(user, notToMeet, startTime, endTime);
+        scheduleRepository.save(schedule);
+        notToMeet.addSchedule(schedule);
     }
 
 

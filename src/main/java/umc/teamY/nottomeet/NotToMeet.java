@@ -37,15 +37,14 @@ public class NotToMeet extends BaseTimeEntity {
 
     private Date date;
 
-    @Builder.Default
-    @OneToMany
-    @JoinColumn(name = "not_to_meet_id")
-    private List<Schedule> schedules = new ArrayList<>();
+    @OneToMany(mappedBy = "notToMeet")
+    private List<Schedule> schedules;
 
     public static NotToMeet of(UserProject userProject, Date date) {
         return NotToMeet.builder()
                 .userProject(userProject)
                 .date(date)
+                .schedules(new ArrayList<>())
                 .build();
     }
 
