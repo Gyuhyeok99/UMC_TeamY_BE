@@ -1,29 +1,33 @@
 package umc.teamY.todo;
 
+import static umc.teamY.exception.ErrorCode.MEETING_NOT_EXIST;
+import static umc.teamY.exception.ErrorCode.TAG_NOT_EXIST;
+import static umc.teamY.exception.ErrorCode.TODO_NOT_EXIST;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import umc.teamY.contribution.Contribution;
+import umc.teamY.contribution.ContributionRepository;
 import umc.teamY.exception.CustomException;
+import umc.teamY.exception.ErrorCode;
 import umc.teamY.meeting.Meeting;
 import umc.teamY.meeting.MeetingRepository;
 import umc.teamY.tag.Tag;
 import umc.teamY.tag.TagRepository;
 import umc.teamY.todo.dto.TodoCreateRequest;
 import umc.teamY.todo.dto.TodoCreateResponse;
-import umc.teamY.todo.dto.TodoDetailResponse;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static umc.teamY.exception.ErrorCode.*;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TodoService {
 
     private final TodoRepository todoRepository;
     private final MeetingRepository meetingRepository;
     private final TagRepository tagRepository;
+    private final ContributionRepository contributionRepository;
+//    private final UserRepository userRepository;
 
     /** 체크리스트 생성 */
     public TodoCreateResponse addTodoMeeting(TodoCreateRequest request) {
@@ -57,6 +61,12 @@ public class TodoService {
 
         Boolean isCompleted = todo.getIsCompleted();
         isCompleted = !isCompleted;
+
+//        userRepository.incrementContribution(todo.getOwnerId());
+        Contribution contribution = contributionRepository.findByUserUserIdAndProjectProjectId(todo.getOwnerId(),
+                        todo.getMeeting().getProject().getId())
+                .orElseThrow(() -> new CustomException(ErrorCode.CONTRIBUTION_NOT_FOUND));
+        contributionRepository.incrementContribution(contribution.getId());
 
         todo.updateTodoCompleted(isCompleted);
         todoRepository.save(todo);

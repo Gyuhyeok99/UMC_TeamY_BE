@@ -1,9 +1,15 @@
 package umc.teamY.project;
 
+import static umc.teamY.exception.ErrorCode.USER_NOT_FOUND;
+
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import umc.teamY.contribution.Contribution;
+import umc.teamY.contribution.ContributionRepository;
 import umc.teamY.exception.CustomException;
 import umc.teamY.project.dto.ProjectCreateReponse;
 import umc.teamY.project.dto.ProjectCreateRequest;
@@ -12,11 +18,6 @@ import umc.teamY.user.User;
 import umc.teamY.user.UserRepository;
 import umc.teamY.user_project.UserProject;
 import umc.teamY.user_project.UserProjectRepository;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static umc.teamY.exception.ErrorCode.USER_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +28,7 @@ public class ProjectService {
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
     private final UserProjectRepository userProjectRepository;
+    private final ContributionRepository contributionRepository;
 
     public List<ProjectListReponse> findByProjectTerm(ProjectTerm projectTerm) {
         List<Project> projects = projectRepository.findByProjectTerm(projectTerm);
@@ -51,7 +53,16 @@ public class ProjectService {
                     .project(project)
                     .build();
             userProjectRepository.save(userProject);
+
+            Contribution contribution = Contribution.builder()
+                    .user(user)
+                    .project(project)
+                    .count(0)
+                    .build();
+            contributionRepository.save(contribution);
+            user.addContribution(contribution);
         }
+
         return new ProjectCreateReponse(project.getId());
     }
 

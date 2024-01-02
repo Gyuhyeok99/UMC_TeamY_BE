@@ -10,6 +10,7 @@ public enum ErrorCode {
 
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "Invalid token"),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "User not founded"),
+    CONTRIBUTION_NOT_FOUND(HttpStatus.NOT_FOUND, "Contribution not founded"),
     POST_NOT_FOUND(HttpStatus.NOT_FOUND, "Post not founded"),
     INVALID_PASSWORD(HttpStatus.UNAUTHORIZED, "Invalid password"),
     DUPLICATED_USER_NAME(HttpStatus.CONFLICT, "Duplicated user name"),
