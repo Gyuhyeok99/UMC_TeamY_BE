@@ -23,7 +23,7 @@ public class MeetingController {
     /** 회의 전체 조회 */
     @GetMapping("/{projectId}")
     public ResponseEntity<MeetingTotalResponse> getTotalMeeting(@PathVariable("projectId") Long projectId) {
-        meetingService.getTotalMeeting(projectId);
-        return ResponseEntity.ok().build();
+        MeetingTotalResponse response = meetingService.getTotalMeeting(projectId);
+        return ResponseEntity.ok(response);
     }
 }
