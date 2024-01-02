@@ -17,7 +17,7 @@
 
 ### Frontend
 
-- <img src="https://img.shields.io/badge/Visual Studio Code-1867C0?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
+- <img src="https://img.shields.io/badge/android-34A853?style=for-the-badge&logo=android&logoColor=white" height="20px">
 
 ### Database
 
