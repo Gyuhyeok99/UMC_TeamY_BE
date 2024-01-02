@@ -1,12 +1,17 @@
 package umc.teamY.nottomeet;
 
+import java.time.LocalTime;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.teamY.global.Response;
+import umc.teamY.nottomeet.dto.AvailableTimesResponse;
 import umc.teamY.nottomeet.dto.NotToMeetCreateRequest;
 import umc.teamY.nottomeet.dto.ScheduleAddRequest;
 
@@ -29,5 +34,10 @@ public class NotToMeetController {
         return Response.success();
     }
 
+    @GetMapping
+    public Response<AvailableTimesResponse> availableTimes(@RequestParam String date, @RequestParam Long projectId) {
+        List<LocalTime[]> availableTimes = notToMeetService.findAvailableTimes(projectId, date);
+        return Response.success(new AvailableTimesResponse(availableTimes));
+    }
 
 }

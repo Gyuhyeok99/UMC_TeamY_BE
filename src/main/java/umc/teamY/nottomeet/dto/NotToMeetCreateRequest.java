@@ -1,6 +1,5 @@
 package umc.teamY.nottomeet.dto;
 
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -9,5 +8,5 @@ import lombok.Getter;
 public class NotToMeetCreateRequest {
     private Long userId;
     private Long projectId;
-    private Date date;
+    private String date;
 }
