@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import umc.teamY.global.Response;
 import umc.teamY.meeting.dto.MeetingCreateRequest;
 import umc.teamY.meeting.dto.MeetingCreateResponse;
+import umc.teamY.meeting.dto.MeetingDetailResponse;
 import umc.teamY.meeting.dto.MeetingTotalResponse;
+import umc.teamY.todo.TodoService;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,6 +18,7 @@ import umc.teamY.meeting.dto.MeetingTotalResponse;
 public class MeetingController {
 
     private final MeetingService meetingService;
+    // private final TodoService todoService;
 
     /** 회의 생성 */
     @PostMapping("/")
@@ -22,11 +27,14 @@ public class MeetingController {
     }
 
     /** 회의 전체 조회 */
-    @GetMapping("/{projectId}")
+    @GetMapping("/total/{projectId}")
     public Response<MeetingTotalResponse> getTotalMeeting(@PathVariable("projectId") Long projectId) {
-//        MeetingTotalResponse response = meetingService.getTotalMeeting(projectId);
-//        return ResponseEntity.ok(response);
-
         return Response.success(meetingService.getTotalMeeting(projectId));
+    }
+
+    /** 회의 상세 조회 */
+    @GetMapping("/detail/{meetingId}")
+    public Response<List<MeetingDetailResponse>> getDetailMeeting(@PathVariable("meetingId") Long meetingId) {
+        return Response.success(meetingService.getDetailMeeting(meetingId));
     }
 }
