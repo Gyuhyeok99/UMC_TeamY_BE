@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
     List<Todo> findTodosByMeetingIdAndTagId(Long meetingId, Long tagId);
+    List<Long> findTodoIdsByMeetingIdAndIsCompleted(Long meetingId, Boolean isCompleted);
 }
