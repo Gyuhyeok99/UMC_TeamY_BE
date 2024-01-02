@@ -1,0 +1,14 @@
+package umc.teamY.todo.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class TodoCreateResponse {
+    private Long todoId;
+}
