@@ -50,6 +50,12 @@ public class NotToMeetService {
         return findAvailableTimes(schedules);
     }
 
+    public List<Schedule> getSchedules(String date, Long projectId) {
+        NotToMeet notToMeet = notToMeetRepository.findByUserProjectProjectIdAndDate(projectId,date)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_TO_MEET_NOT_FOUND));
+        return notToMeet.getSchedules();
+    }
+
     private List<LocalTime[]> findAvailableTimes(List<Schedule> schedules) {
         List<LocalTime[]> availableTimes = new ArrayList<>();
 
