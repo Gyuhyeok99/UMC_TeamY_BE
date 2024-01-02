@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.teamY.project.Project;
 import umc.teamY.user.User;
-import umc.teamY.util.BaseTimeEntity;
+import umc.teamY.global.BaseTimeEntity;
 
 import static jakarta.persistence.FetchType.LAZY;
 

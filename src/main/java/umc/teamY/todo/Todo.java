@@ -3,7 +3,7 @@ package umc.teamY.todo;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.teamY.meeting.Meeting;
-import umc.teamY.util.BaseTimeEntity;
+import umc.teamY.global.BaseTimeEntity;
 
 @Getter
 @Entity

@@ -1,4 +1,4 @@
-package umc.teamY.util;
+package umc.teamY.global;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

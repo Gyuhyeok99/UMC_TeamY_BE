@@ -3,7 +3,7 @@ package umc.teamY.nottomeet;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.teamY.user_project.UserProject;
-import umc.teamY.util.BaseTimeEntity;
+import umc.teamY.global.BaseTimeEntity;
 
 @Getter
 @Entity

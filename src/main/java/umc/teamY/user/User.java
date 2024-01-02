@@ -2,7 +2,7 @@ package umc.teamY.user;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.teamY.util.BaseTimeEntity;
+import umc.teamY.global.BaseTimeEntity;
 
 @Getter
 @Entity

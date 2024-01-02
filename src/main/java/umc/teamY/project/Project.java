@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
-import umc.teamY.util.BaseTimeEntity;
+import umc.teamY.global.BaseTimeEntity;
 
 import java.time.LocalDateTime;
 

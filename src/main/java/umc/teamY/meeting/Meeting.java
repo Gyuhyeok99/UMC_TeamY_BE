@@ -3,7 +3,7 @@ package umc.teamY.meeting;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.teamY.project.Project;
-import umc.teamY.util.BaseTimeEntity;
+import umc.teamY.global.BaseTimeEntity;
 
 import java.time.LocalDateTime;
 
