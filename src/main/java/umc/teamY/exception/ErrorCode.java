@@ -20,7 +20,10 @@ public enum ErrorCode {
 
     // Meeting
     PROJECT_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 프로젝트입니다."),
-    MEETING_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 회의입니다.")
+    MEETING_NOT_EXIST(HttpStatus.NOT_FOUND, "존재하지 않는 회의입니다."),
+
+    USER_PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "Project not founded"),
+    NOT_TO_MEET_NOT_FOUND(HttpStatus.NOT_FOUND, "Not To Meet not founded")
     ;
 
     private final HttpStatus status;
