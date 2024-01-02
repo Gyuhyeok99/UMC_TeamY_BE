@@ -27,4 +27,12 @@ public class Todo extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id")
     private Tag tag;
+
+    public void assignOnwer(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public void updateTodoCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
 }
