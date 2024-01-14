@@ -1,6 +1,11 @@
 # 2024 5th UMC Seoul HACKATHON 대상
 <img src="https://github.com/Gyuhyeok99/UMC_TeamY_BE/assets/126947828/6371efd1-99c4-4821-9413-926e78bfc864" width="500px" height="300px">
 
+## 서비스 소개(엄격한 관리자)
+
+https://github.com/Gyuhyeok99/UMC_TeamY_BE/assets/126947828/54c259b6-c865-4efd-8a5e-9aaf5b5deead
+
+
 ## 🧑🏻‍💻 Contributors
 |혁규|조이|코코|
 |:-:|:-:|:-:|
