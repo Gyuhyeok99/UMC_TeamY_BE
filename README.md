@@ -1,4 +1,4 @@
-# UMC 5th 해커톤 대상
+# 2024 5th UMC Seoul HACKATHON 대상
 <img src="https://github.com/Gyuhyeok99/UMC_TeamY_BE/assets/126947828/6371efd1-99c4-4821-9413-926e78bfc864" width="500px" height="300px">
 
 ## 🧑🏻‍💻 Contributors
